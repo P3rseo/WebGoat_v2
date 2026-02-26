@@ -24,7 +24,8 @@ package org.owasp.webgoat.lessons.jwt;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
-import static org.owasp.webgoat.lessons.jwt.JWTRefreshEndpoint.PASSWORD;
+//import static org.owasp.webgoat.lessons.jwt.JWTRefreshEndpoint.PASSWORD;
+import org.springframework.beans.factory.annotation.Value;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -42,6 +43,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 public class JWTRefreshEndpointTest extends LessonTest {
+
+  @Value("${app.security.login-password}")
+  private String PASSWORD;
 
   @BeforeEach
   void setup() {

@@ -48,6 +48,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
 
 @RestController
 @AssignmentHints({
@@ -58,8 +59,13 @@ import org.springframework.web.bind.annotation.RestController;
 })
 public class JWTRefreshEndpoint extends AssignmentEndpoint {
 
-  public static final String PASSWORD = "bm5nhSkxCXZkKRy4";
-  private static final String JWT_PASSWORD = "bm5n3SkxCX4kKRy4";
+  //public static final String PASSWORD = "bm5nhSkxCXZkKRy4";
+  //private static final String JWT_PASSWORD = "bm5n3SkxCX4kKRy4";
+  @Value("${app.security.login-password}")
+  private String PASSWORD;
+
+  @Value("${app.security.jwt-secret}")
+  private String JWT_PASSWORD;
   private static final List<String> validRefreshTokens = new ArrayList<>();
 
   @PostMapping(
